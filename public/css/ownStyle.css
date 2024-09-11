@@ -1,0 +1,37 @@
+@media (min-width: 768px) {
+    .main-container {
+      overflow: hidden; /* Oculta el scroll en pantallas grandes */
+    }
+}
+
+body{
+    background-image: url('../img/topography.svg');
+    background-size: cover;
+}
+.alerts-container {
+    max-width: 400px;
+    gap: 10px; /* Adjust space between alerts if needed */
+}
+
+.alert-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 100%;
+  transition: width 1s linear;
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    }
+}

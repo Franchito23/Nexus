@@ -1,0 +1,43 @@
+extends ../layout/index
+
+block contenido 
+    if errors 
+        .alerts-container.flex-col.items-end.fixed.top-0.right-0.m-4.z-50
+            each message in errors
+                .alert-wrapper.m-1
+                    .alert.bg-violet-600.text-white.p-4.rounded-lg.shadow-lg.relative.m-1.animate__animated.animate__backInRight
+                        button.close.absolute.top-2.right-2.text-white
+                            i.fas.fa-times
+                        p.text-lg.font-bold= message.msg
+                        .progress-bar.bg-violet-800.h-1.absolute.bottom-0.left-0
+                        .fade-out.hidden
+    div.mt-3.mx-auto.max-w-xl
+        div.bg-zinc-300.py-4.px-4.shadow-xl.rounded-lg
+            h2.text-center.text-5xl.text-violet-900.font-bold= page
+            div.flex.justify-center
+                img.h-full.max-h-80(src="/img/NexusFull.png", alt="Nexus Logo")
+            form.space-y-5(method="POST" action="/auth/register")
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="name") Nombre de usuario  
+                        i.fa-solid.fa-user   
+                    input#userName.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="text", name="name" placeholder="Ingresa tu nombre de usuario" value= user ? user.name : '')
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="email") Correo electrónico 
+                        i.fa-solid.fa-envelope  
+                    input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="text", name="email" placeholder="example@mail.com" value= user ? user.email : '')
+                div
+                    label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="password")  Contraseña
+                        i.fa-solid.fa-key  
+                    div.relative
+                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="password", name="password", placeholder="Ingresa tu contraseña")
+                        span.absolute.inset-y-0.right-0.flex.items-center.pr-3
+                            i.fa-solid.fa-eye.cursor-pointer(id="togglePassword")
+                div.flex.justify-center
+                    button.bg-violet-900.text-zinc-300.text-lg.font-semibold.px-4.py-2.m-2.rounded-lg.transition-transform.transform-gpu(type="submit") Ingresar
+                div.flex.justify-center
+                    a(href="/auth/login") ¿Ya tienes cuenta?. Inicia sesión
+
+
+
+
+    script(src="/js/frmFunctions.js")
